@@ -40,10 +40,3 @@ function serviceProviderSummary(fileName) {
 }
 // calling the function
 serviceProviderSummary('PhoneNumbers.txt');
-
-// Results
-// MTN: 395095
-// Airtel: 263166
-// Globacom: 183734
-// 9Mobile: 131409
-// MTEL: 26596

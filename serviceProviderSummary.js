@@ -1,4 +1,9 @@
-// An object containing the service providers details: names and prefixes
+// Declaring variables for the logic and UI elements
+let phoneNumbersList, serviceProvider, totalNumberOfEachProvider; 
+const result = [];
+const paragraph = document.querySelectorAll('p');
+
+// Initializing serviceProviders object containing the service providers details: names and prefixes
 const serviceProviders = {
     'MTN': ['0703', '0706', '0803', '0806', '0810', 
             '0813', '0814', '0816', '0903', '0906', 
@@ -24,19 +29,27 @@ function serviceProviderSummary(fileName) {
     // splitting the text into an array of numbers
     .then(text => { 
         // creating an array of all the numbers
-        let phoneNumbersList = text.split('\n');
+        phoneNumbersList = text.split('\n');
         // creating an array of all the numbers that start with each service provider's prefixes
-        for( const serviceProvider in serviceProviders) {
+        for( serviceProvider in serviceProviders) {
             // filtering out the numbers that start with each service provider's prefixes
-            let totalNumberOfEachProvider = phoneNumbersList.filter(number => serviceProviders[serviceProvider]
+            totalNumberOfEachProvider = phoneNumbersList.filter(number => serviceProviders[serviceProvider]
                 // for four digit prefixes
                 .includes(number.substring(0,4)) || serviceProviders[serviceProvider]
                 // for five digit prefixes
                 .includes(number.substring(0,5)));
+            // pushing the service provider and the total number of numbers to the result array
+                result.push(totalNumberOfEachProvider.length);
             // printing the total of phone numbers for each service provider
-            console.log(`${serviceProvider}: ${totalNumberOfEachProvider.length}`);
+            // console.log(`${serviceProvider}: ${totalNumberOfEachProvider.length}`);
+        }
+        // printing the total of phone numbers for each service provider to the UI
+        for(let i = 0; i < result.length; i+=1) {
+            paragraph[i].innerText = `Total: ${result[i]}`;
         }
     });	
 }
 // calling the function
 serviceProviderSummary('PhoneNumbers.txt');
+
+

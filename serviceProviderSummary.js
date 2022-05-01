@@ -41,7 +41,7 @@ function serviceProviderSummary(fileName) {
             // pushing the service provider and the total number of numbers to the result array
                 result.push(totalNumberOfEachProvider.length);
             // printing the total of phone numbers for each service provider
-            // console.log(`${serviceProvider}: ${totalNumberOfEachProvider.length}`);
+            console.log(`${serviceProvider}: ${totalNumberOfEachProvider.length}`);
         }
         // printing the total of phone numbers for each service provider to the UI
         for(let i = 0; i < result.length; i+=1) {
